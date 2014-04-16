@@ -21,7 +21,13 @@ Usage
 <script>
 
 // seajs can load circular dependency module after loading circular plugin.
-seajs.use("path/to/some")
+seajs.use("path/to/circular-mod")
 
 </script>
 ```
+
+Note
+-----
+
+This plugin bases on seajs 2.3.0+
+<br/>When a circular dependency occurs, the program will function well as well as warning a message in console.

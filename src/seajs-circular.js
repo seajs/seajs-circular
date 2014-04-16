@@ -12,7 +12,7 @@ function check(uri, history, arr) {
   arr = arr || [];
   arr.push(uri);
   if(history.hasOwnProperty(uri)) {
-    console.warn('cyclic dependence:\n' + arr.join('\n'));
+    console.warn('circular dependency:\n' + arr.join('\n'));
     var mod = seajs.cache[uri];
     mod.onload();
     return;
