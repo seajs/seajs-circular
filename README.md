@@ -1,4 +1,4 @@
-seajs-css
+seajs-circular
 =========
 
 A Sea.js plugin for circular dependency
