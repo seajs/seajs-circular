@@ -15,7 +15,16 @@ function check(uri, history, arr) {
   if(history.hasOwnProperty(uri)) {
     console.warn('circular dependency:\n' + arr.join('\n'));
     var mod = seajs.cache[uri];
-    mod.onload();
+    var uris = mod.resolve();
+    for(var i = uris.length - 1; i >=0; i--) {
+      if(uris[i] === arr[1]) {
+        mod.dependencies.splice(i, 1);
+      }
+    }
+    //需递归，防止多重循环引用只检测出其中一个的情况
+    if(mod.dependencies.length) {
+      check(uri);
+    }
     return;
   }
   history[uri] = true;
@@ -32,5 +41,5 @@ seajs.on("save", function(mod) {
     check(mod.uri);
   }
 });
-define("seajs/seajs-circular/1.0.0/seajs-circular-debug", [], {});
+define("seajs/seajs-circular/1.1.0/seajs-circular-debug", [], {});
 })();

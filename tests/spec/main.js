@@ -12,9 +12,22 @@ else {
 
     var test = require('../test')
 
+    //a->b->a
     var a = require('./a')
+    //c->d->c, d->e
+    var c = require('./c')
+    //f->g->h->f, g->i
+    var f = require('./f')
+    //j->k->j, k->l, j->l->j
+    var j = require('./j')
+    //m->n->o->m, n->o->n, m->o->m
+    var m = require('./m')
 
     test.assert(a.a === 'a' && a.a2 === 'a2', 'a should be { a: "a", a2: "a2" }')
+    test.assert(c.c === 'c' && c.c2 === 'c2', 'c should be { c: "c", c2: "c2" }')
+    test.assert(f.f === 'f' && f.f2 === 'f2', 'f should be { f: "f", f2: "f2" }')
+    test.assert(j.j === 'j' && j.j2 === 'j2', 'j should be { j: "j", j2: "j2" }')
+    test.assert(m.m === 'm' && m.m2 === 'm2', 'm should be { m: "m", m2: "m2" }')
     test.next()
 
   })}
