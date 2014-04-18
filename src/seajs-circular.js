@@ -1,3 +1,4 @@
+var restore = {};
 function clone(obj) {
   var ret = {};
   for(var i in obj) {
@@ -17,6 +18,9 @@ function check(uri, history, arr) {
     var uris = mod.resolve();
     for(var i = uris.length - 1; i >=0; i--) {
       if(uris[i] === arr[1]) {
+        if(!restore.hasOwnProperty(uri)) {
+          restore[uri] = mod.dependencies.slice(0);
+        }
         mod.dependencies.splice(i, 1);
       }
     }
@@ -38,5 +42,13 @@ function check(uri, history, arr) {
 seajs.on("save", function(mod) {
   if(mod.dependencies.length) {
     check(mod.uri);
+  }
+});
+seajs.on("exec", function(mod) {
+  //运行结束后还原
+  if(restore.hasOwnProperty(mod.uri)) {
+    var data = restore[mod.uri];
+    mod.dependencies = data;
+    delete restore[mod.uri];
   }
 });

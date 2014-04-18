@@ -22,12 +22,15 @@ else {
     var j = require('./j')
     //m->n->o->m, n->o->n, m->o->m
     var m = require('./m')
+    //again
+    var m2 = require('./m')
 
     test.assert(a.a === 'a' && a.a2 === 'a2', 'a should be { a: "a", a2: "a2" }')
     test.assert(c.c === 'c' && c.c2 === 'c2', 'c should be { c: "c", c2: "c2" }')
     test.assert(f.f === 'f' && f.f2 === 'f2', 'f should be { f: "f", f2: "f2" }')
     test.assert(j.j === 'j' && j.j2 === 'j2', 'j should be { j: "j", j2: "j2" }')
     test.assert(m.m === 'm' && m.m2 === 'm2', 'm should be { m: "m", m2: "m2" }')
+    test.assert(m2.m === 'm' && m2.m2 === 'm2', 'm2 should be { m: "m", m2: "m2" }')
     test.next()
 
   })}

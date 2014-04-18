@@ -1,7 +1,7 @@
 {
   "family": "seajs",
   "name": "seajs-circular",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A Sea.js plugin for circular dependency",
   "keywords": ["seajs", "plugin", "circular dependency"],
   "author": "army8735 <army8735@qq.com>",

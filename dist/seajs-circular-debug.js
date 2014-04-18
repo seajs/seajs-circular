@@ -1,4 +1,5 @@
 (function(){
+var restore = {};
 function clone(obj) {
   var ret = {};
   for(var i in obj) {
@@ -18,6 +19,9 @@ function check(uri, history, arr) {
     var uris = mod.resolve();
     for(var i = uris.length - 1; i >=0; i--) {
       if(uris[i] === arr[1]) {
+        if(!restore.hasOwnProperty(uri)) {
+          restore[uri] = mod.dependencies.slice(0);
+        }
         mod.dependencies.splice(i, 1);
       }
     }
@@ -41,5 +45,13 @@ seajs.on("save", function(mod) {
     check(mod.uri);
   }
 });
-define("seajs/seajs-circular/1.1.0/seajs-circular-debug", [], {});
+seajs.on("exec", function(mod) {
+  //运行结束后还原
+  if(restore.hasOwnProperty(mod.uri)) {
+    var data = restore[mod.uri];
+    mod.dependencies = data;
+    delete restore[mod.uri];
+  }
+});
+define("seajs/seajs-circular/1.2.0/seajs-circular-debug", [], {});
 })();
