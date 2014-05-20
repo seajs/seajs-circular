@@ -5,6 +5,6 @@ define(function(require, exports) {
   var e = require('./e');
   var test = require('../test');
   test.assert(c.c === 'c', 'c.c should be c');
-  test.assert(c.c2 === undefined, 'c.c2 should be undefined');
+  test.assert(c.c2 === 'c2', 'c.c2 should be c2');
   test.assert(e === 'e', 'e should be e');
 });
