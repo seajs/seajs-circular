@@ -1,5 +1,4 @@
 {
-  "family": "seajs",
   "name": "seajs-circular",
   "version": "1.2.0",
   "description": "A Sea.js plugin for circular dependency",
@@ -11,6 +10,9 @@
   },
   "devDependencies": {
     "seatools": "*"
+  },
+  "spm": {
+    "main": "dist/seajs-circular.js"
   },
   "config": {
     "plugin-concat": [
