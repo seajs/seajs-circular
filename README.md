@@ -29,5 +29,7 @@ seajs.use("path/to/circular-mod")
 Note
 -----
 
-This plugin bases on seajs 2.3.0+
+This plugin bases on seajs ^2.3.0
 <br/>When a circular dependency occurs, the program will function well as well as warning a message in console.
+
+seajs 3.0.0 will native support circular dependency without this plugin.
